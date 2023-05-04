@@ -11,4 +11,5 @@ class Globals {
   static const String mainMenuSprite = 'MainMenu.png';
   static const String youLoseSprite = 'YouLose.png';
   static const String youWinSprite = 'YouWin.png';
+  static const String hitCatSound = 'hitCat.wav';
 }
