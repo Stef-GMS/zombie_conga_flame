@@ -19,14 +19,14 @@ class ZombieComponent extends SpriteGroupComponent<MovementState>
   /// Max speed Zombie will move
   final double _speed = 500;
 
+  /// Joystick for moving Zombie
+  JoystickComponent joystick;
+
   /// Device boundaries
   late double _leftBound;
   late double _rightBound;
   late double _upBound;
   late double _downBound;
-
-  /// Joystick for moving Zombie
-  JoystickComponent joystick;
 
   ZombieComponent({required this.joystick});
 
@@ -63,40 +63,40 @@ class ZombieComponent extends SpriteGroupComponent<MovementState>
     height = _spriteHeight / 2.5;
     width = _spriteWidth / 2.5;
     anchor = Anchor.center;
+  }
 
-    @override
-    void update(dt) {
-      super.update(dt);
+  @override
+  void update(dt) {
+    super.update(dt);
 
-      if (joystick.direction == JoystickDirection.idle) {
-        current = MovementState.idle;
-        return;
-      }
-      if (x >= _rightBound) {
-        x = _rightBound - 1;
-      }
-
-      if (x <= _leftBound) {
-        x = _leftBound + 1;
-      }
-
-      if (y <= _upBound) {
-        y = _upBound + 1;
-      }
-
-      if (y >= _downBound) {
-        y = _downBound - 1;
-      }
-
-      bool movingLeft = joystick.relativeDelta[0] < 0;
-
-      if (movingLeft) {
-        current = MovementState.move1;
-      } else {
-        current = MovementState.move2;
-      }
-
-      position.add(joystick.relativeDelta * _speed * dt);
+    if (joystick.direction == JoystickDirection.idle) {
+      current = MovementState.idle;
+      return;
     }
+    if (x >= _rightBound) {
+      x = _rightBound - 1;
+    }
+
+    if (x <= _leftBound) {
+      x = _leftBound + 1;
+    }
+
+    if (y <= _upBound) {
+      y = _upBound + 1;
+    }
+
+    if (y >= _downBound) {
+      y = _downBound - 1;
+    }
+
+    bool movingLeft = joystick.relativeDelta[0] < 0;
+
+    if (movingLeft) {
+      current = MovementState.move1;
+    } else {
+      current = MovementState.move2;
+    }
+
+    position.add(joystick.relativeDelta * _speed * dt);
   }
 }
