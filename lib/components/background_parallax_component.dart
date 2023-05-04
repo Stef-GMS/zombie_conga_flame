@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../constants/globals.dart';
 import '../games/zombie_conga_game.dart';
 
-class MyParallaxComponent extends ParallaxComponent<ZombieConga> {
+class MyParallaxComponent extends ParallaxComponent<ZombieCongaGame> {
   @override
   Future<void> onLoad() async {
     /* from iOS version

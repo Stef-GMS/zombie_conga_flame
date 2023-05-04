@@ -4,6 +4,6 @@ import '../games/zombie_conga_game.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final game = ZombieConga();
+  final game = ZombieCongaGame();
   runApp(GameWidget(game: game));
 }

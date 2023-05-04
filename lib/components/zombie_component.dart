@@ -11,7 +11,7 @@ enum MovementState {
 }
 
 class ZombieComponent extends SpriteGroupComponent<MovementState>
-    with HasGameRef<ZombieConga> {
+    with HasGameRef<ZombieCongaGame> {
   /// Zombie height and width
   final double _spriteWidth = 314;
   final double _spriteHeight = 204;

@@ -5,7 +5,7 @@ import '../components/zombie_component.dart';
 import '../inputs/joystick.dart';
 import '../components/background_parallax_component.dart';
 
-class ZombieConga extends FlameGame {
+class ZombieCongaGame extends FlameGame {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
