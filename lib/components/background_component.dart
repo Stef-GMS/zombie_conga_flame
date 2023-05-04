@@ -1,6 +1,6 @@
 import 'package:flame/components.dart';
 import '../constants/globals.dart';
-import '../games/zombie_conga.dart';
+import '../games/zombie_conga_game.dart';
 
 class BackgroundComponent extends SpriteComponent with HasGameRef<ZombieConga> {
   @override
