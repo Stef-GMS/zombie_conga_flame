@@ -1,3 +1,4 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
 import '../constants/globals.dart';
@@ -63,6 +64,8 @@ class ZombieComponent extends SpriteGroupComponent<MovementState>
     height = _spriteHeight / 2.5;
     width = _spriteWidth / 2.5;
     anchor = Anchor.center;
+
+    add(CircleHitbox());
   }
 
   @override
