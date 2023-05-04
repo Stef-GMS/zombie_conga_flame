@@ -1,0 +1,47 @@
+name: zombie_conga_flame
+description: This is a Flutter version of the raywenderlich.com app from 2D Apple Games by Tutorials Ed 3.0
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 2.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+  flutter: ^2.10.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flame: ^1.7.3
+  flame_audio: ^2.0.2
+
+  cupertino_icons: ^1.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.1
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/
+    - assets/audio/
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
