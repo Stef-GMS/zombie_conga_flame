@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 
 import '../constants/globals.dart';
-import '../games/zombie_conga.dart';
+import '../games/zombie_conga_game.dart';
 
 enum MovementState {
   idle,

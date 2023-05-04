@@ -1,7 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flame/palette.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 
 final JoystickComponent joystick = JoystickComponent(
   knob: CircleComponent(

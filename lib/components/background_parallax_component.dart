@@ -3,7 +3,7 @@ import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
 import '../constants/globals.dart';
-import '../games/zombie_conga.dart';
+import '../games/zombie_conga_game.dart';
 
 class MyParallaxComponent extends ParallaxComponent<ZombieConga> {
   @override
