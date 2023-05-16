@@ -12,4 +12,5 @@ class Globals {
   static const String youLoseSprite = 'YouLose.png';
   static const String youWinSprite = 'YouWin.png';
   static const String hitCatSound = 'hitCat.wav';
+  static const String hitEnemySound = 'hitCatLady.wav';
 }

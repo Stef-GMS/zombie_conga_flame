@@ -2,18 +2,16 @@ import 'dart:math';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:zombie_conga_flame/components/zombie_component.dart';
 import 'package:zombie_conga_flame/games/zombie_conga_game.dart';
-import 'package:flutter/material.dart';
 
 import '../constants/globals.dart';
 
-class CatComponent extends SpriteComponent
+class EnemyComponent extends SpriteComponent
     with HasGameRef<ZombieCongaGame>, CollisionCallbacks {
-  final double _spriteHeight = 156;
-  final double _spriteWidth = 146;
+  final double _spriteHeight = 322;
+  final double _spriteWidth = 232;
 
   final Random _random = Random();
 
@@ -21,7 +19,7 @@ class CatComponent extends SpriteComponent
   Future<void> onLoad() async {
     await super.onLoad();
 
-    sprite = await gameRef.loadSprite(Globals.catSprite);
+    sprite = await gameRef.loadSprite(Globals.enemySprite);
 
     height = _spriteHeight / 2.5;
     width = _spriteWidth / 2.5;
@@ -36,13 +34,13 @@ class CatComponent extends SpriteComponent
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
+
     if (other is ZombieComponent) {
-      FlameAudio.play(Globals.hitCatSound);
+      FlameAudio.play(Globals.hitEnemySound);
 
       removeFromParent(); //
-
       gameRef.score += 1;
-      gameRef.add(CatComponent());
+      gameRef.add(EnemyComponent());
     }
   }
 
