@@ -3,6 +3,7 @@ class Globals {
 
   static const String backgroundParallaxSprite1 = 'background.png';
   static const String zombieIdle = 'zombieIdle.png';
+  static const String zombieSpriteSheet = 'zombie_spitesheet.png';
   static const String zombieMove1 = 'zombieMove1.png';
   static const String zombieMove2 = 'zombieMove2.png';
   static const String zombieMove3 = 'zombieMove3.png';
