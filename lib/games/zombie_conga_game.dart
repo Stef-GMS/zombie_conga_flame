@@ -54,50 +54,50 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
     add(ScreenHitbox());
 
-    _scoreText = TextComponent(
-      text: 'Score: $score',
-      position: Vector2(40, 10),
-      anchor: Anchor.topLeft,
-      textRenderer: TextPaint(
-        style: TextStyle(
-          color: BasicPalette.white.color,
-          fontSize: 30,
-        ),
-      ),
-    );
-
-    add(_scoreText);
-
-    _timeText = TextComponent(
-      text: 'Time: $_remainingTime',
-      position: Vector2(size.x - 40, 10),
-      anchor: Anchor.topRight,
-      textRenderer: TextPaint(
-        style: TextStyle(
-          color: BasicPalette.white.color,
-          fontSize: 30,
-        ),
-      ),
-    );
-
-    add(_timeText);
-
-    _timer = Timer(
-      1,
-      repeat: true,
-      onTick: () {
-        if (_remainingTime == 0) {
-          // Pause = game.
-          pauseEngine();
-          overlays.add(GameOverMenu.ID);
-        } else {
-          // Decrease time by one second.
-          _remainingTime -= 1;
-        }
-      },
-    );
-
-    _timer.start();
+    // _scoreText = TextComponent(
+    //   text: 'Score: $score',
+    //   position: Vector2(40, 10),
+    //   anchor: Anchor.topLeft,
+    //   textRenderer: TextPaint(
+    //     style: TextStyle(
+    //       color: BasicPalette.white.color,
+    //       fontSize: 30,
+    //     ),
+    //   ),
+    // );
+    //
+    // add(_scoreText);
+    //
+    // _timeText = TextComponent(
+    //   text: 'Time: $_remainingTime',
+    //   position: Vector2(size.x - 40, 10),
+    //   anchor: Anchor.topRight,
+    //   textRenderer: TextPaint(
+    //     style: TextStyle(
+    //       color: BasicPalette.white.color,
+    //       fontSize: 30,
+    //     ),
+    //   ),
+    // );
+    //
+    // add(_timeText);
+    //
+    // _timer = Timer(
+    //   1,
+    //   repeat: true,
+    //   onTick: () {
+    //     if (_remainingTime == 0) {
+    //       // Pause = game.
+    //       pauseEngine();
+    //       overlays.add(GameOverMenu.ID);
+    //     } else {
+    //       // Decrease time by one second.
+    //       _remainingTime -= 1;
+    //     }
+    //   },
+    // );
+    //
+    // _timer.start();
   } // onLoad()
 
   // spawnCat() {
@@ -110,10 +110,10 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   void update(double dt) {
     super.update(dt);
 
-    _timer.update(dt);
-
-    _scoreText.text = 'Score: $score';
-    _timeText.text = 'Time: $_remainingTime secs';
+    // _timer.update(dt);
+    //
+    // _scoreText.text = 'Score: $score';
+    // _timeText.text = 'Time: $_remainingTime secs';
   }
 
   void reset() {
