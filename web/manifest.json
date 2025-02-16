@@ -1,11 +1,11 @@
 {
-    "name": "zombie_conga_flame",
-    "short_name": "zombie_conga_flame",
+    "name": "Zombie Conga Flame",
+    "short_name": "Zombie Conga Flame",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "This is a Flutter version of the raywenderlich.com app from 2D Apple Games by Tutorials Ed 3.0",
+    "description": "A Very Good Project created by Very Good CLI.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
@@ -18,18 +18,6 @@
             "src": "icons/Icon-512.png",
             "sizes": "512x512",
             "type": "image/png"
-        },
-        {
-            "src": "icons/Icon-maskable-192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "icons/Icon-maskable-512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
         }
     ]
 }

@@ -8,7 +8,7 @@
 PRODUCT_NAME = zombie_conga_flame
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.GeekMeSpeak.zombieCongaFlame
+PRODUCT_BUNDLE_IDENTIFIER = com.geekmespeak.zombie-conga-flame
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 com.GeekMeSpeak. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 com.example. All rights reserved.

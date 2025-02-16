@@ -11,6 +11,8 @@
 .buildlog/
 .history
 .svn/
+.swiftpm/
+migrate_working_dir/
 
 # IntelliJ related
 *.iml
@@ -22,7 +24,10 @@
 .classpath
 .project
 .settings/
-.vscode/*
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
 
 # Flutter repo-specific
 /bin/cache/
@@ -71,6 +76,11 @@ unlinked_spec.ds
 **/android/**/GeneratedPluginRegistrant.java
 **/android/key.properties
 *.jks
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
@@ -113,6 +123,15 @@ unlinked_spec.ds
 **/windows/flutter/generated_plugin_registrant.cc
 **/windows/flutter/generated_plugin_registrant.h
 **/windows/flutter/generated_plugins.cmake
+
+# Web related
+lib/generated_plugin_registrant.dart
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
 
 # Linux
 **/linux/flutter/generated_plugin_registrant.cc

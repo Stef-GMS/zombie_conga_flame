@@ -1,8 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.GeekMeSpeak.zombie_conga_flame">
-   <application
-        android:label="zombie_conga_flame"
-        android:name="${applicationName}"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="${appName}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
@@ -19,7 +17,7 @@
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
-              />
+              />            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
