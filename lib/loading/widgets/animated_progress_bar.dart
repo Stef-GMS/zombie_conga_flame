@@ -27,8 +27,7 @@ class AnimatedProgressBar extends StatelessWidget {
   final double progress;
 
   /// The duration of the animation on [AnimatedProgressBar]
-  static const Duration intrinsicAnimationDuration =
-      Duration(milliseconds: 300);
+  static const Duration intrinsicAnimationDuration = Duration(milliseconds: 1300);
 
   @override
   Widget build(BuildContext context) {

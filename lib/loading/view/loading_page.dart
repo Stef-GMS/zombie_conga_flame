@@ -14,18 +14,23 @@ class LoadingPage extends StatefulWidget {
 class _LoadingPageState extends State<LoadingPage> {
   Future<void> onPreloadComplete(BuildContext context) async {
     final navigator = Navigator.of(context);
-    await Future<void>.delayed(AnimatedProgressBar.intrinsicAnimationDuration);
+
+    await Future<void>.delayed(
+      AnimatedProgressBar.intrinsicAnimationDuration,
+    );
+
     if (!mounted) {
       return;
     }
-    await navigator.pushReplacement<void, void>(TitlePage.route());
+    await navigator.pushReplacement<void, void>(
+      TitlePage.route(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<PreloadCubit, PreloadState>(
-      listenWhen: (prevState, state) =>
-          !prevState.isComplete && state.isComplete,
+      listenWhen: (prevState, state) => !prevState.isComplete && state.isComplete,
       listener: (context, state) => onPreloadComplete(context),
       child: const Scaffold(
         body: Center(
@@ -55,14 +60,14 @@ class _LoadingInternal extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: AnimatedProgressBar(
                 progress: state.progress,
-                backgroundColor: const Color(0xFF2A48DF),
-                foregroundColor: const Color(0xFFFFFFFF),
+                backgroundColor: const Color(0xFFFFFFFF),
+                foregroundColor: const Color(0xFFEF6C00),
               ),
             ),
             Text(
               loadingMessage,
               style: primaryTextTheme.bodySmall!.copyWith(
-                color: const Color(0xFF2A48DF),
+                color: const Color(0xFFEF6C00),
                 fontWeight: FontWeight.w900,
               ),
             ),

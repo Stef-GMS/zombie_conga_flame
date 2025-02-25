@@ -1,8 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:zombie_conga_flame/game/game.dart';
 
-class CounterComponent extends PositionComponent
-    with HasGameRef<ZombieCongaFlame> {
+class CounterComponent extends PositionComponent with HasGameRef<ZombieCongaGame> {
   CounterComponent({
     required super.position,
   }) : super(anchor: Anchor.center);
@@ -15,14 +14,14 @@ class CounterComponent extends PositionComponent
       text = TextComponent(
         anchor: Anchor.center,
         textRenderer: TextPaint(
-          style: game.textStyle,
-        ),
+            //style: game.textStyle,
+            ),
       ),
     );
   }
 
   @override
   void update(double dt) {
-    text.text = gameRef.l10n.counterText(gameRef.counter);
+    //text.text = gameRef.l10n.counterText(gameRef.counter);
   }
 }
