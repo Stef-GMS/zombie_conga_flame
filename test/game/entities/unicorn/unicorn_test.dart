@@ -7,7 +7,7 @@ import 'package:flame_test/flame_test.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:zombie_conga_flame/game/entities/unicorn/behaviors/behaviors.dart';
+import 'package:zombie_conga_flame/game/entities/zombie/behaviors/zombie_behaviors.dart';
 import 'package:zombie_conga_flame/game/game.dart';
 import 'package:zombie_conga_flame/l10n/l10n.dart';
 
