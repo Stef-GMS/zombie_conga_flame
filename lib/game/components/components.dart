@@ -1,1 +1,1 @@
-export 'counter_component.dart';
+export 'joystick_component.dart';
