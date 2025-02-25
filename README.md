@@ -101,6 +101,9 @@ Widget build(BuildContext context) {
 }
 ```
 
+4. Optionally: Run the code generator
+`flutter pub run build_runner build --delete-conflicting-outputs`
+
 ### Adding Supported Locales
 
 Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info.plist` to include the new locale.
