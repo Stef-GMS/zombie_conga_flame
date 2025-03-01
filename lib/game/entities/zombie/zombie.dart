@@ -11,11 +11,11 @@ enum MovementState {
   move3,
 }
 
-class ZombieComponent extends SpriteGroupComponent<MovementState>
+class Zombie extends SpriteGroupComponent<MovementState>
     with //
         HasGameRef<ZombieCongaGame>,
         DragCallbacks {
-  ZombieComponent({
+  Zombie({
     required this.joystick,
   });
 

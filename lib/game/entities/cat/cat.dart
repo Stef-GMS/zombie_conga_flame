@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'package:zombie_conga_flame/constants/globals.dart';
 
-class CatComponent extends SpriteComponent with HasGameRef<ZombieCongaGame>, CollisionCallbacks {
+class Cat extends SpriteComponent //
   final double _spriteHeight = 156;
   final double _spriteWidth = 146;
 
@@ -35,7 +35,7 @@ class CatComponent extends SpriteComponent with HasGameRef<ZombieCongaGame>, Col
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
-    if (other is ZombieComponent) {
+    if (other is Zombie) {
       FlameAudio.play(Globals.hitCatSound);
 
       removeFromParent(); //
@@ -51,7 +51,6 @@ class CatComponent extends SpriteComponent with HasGameRef<ZombieCongaGame>, Col
       ));
 
       gameRef.score += 1;
-      gameRef.add(CatComponent());
     }
   }
 

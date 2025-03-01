@@ -36,11 +36,11 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
     //add(BackgroundComponent());
     add(MyParallaxComponent());
-    add(ZombieComponent(joystick: joystick));
+    add(Zombie(joystick: joystick));
     //add(ZombieComponentSpawning(joystick: joystick));
     add(joystick);
-    add(CatComponent());
-    //add(CatComponentSpawning());
+    //add(CatComponent());
+    add(Cat());
     //spawnCat();
     //add(EnemyComponent());
 
