@@ -26,7 +26,7 @@ class AnimatedProgressBar extends StatelessWidget {
   /// The current progress for the bar.
   final double progress;
 
-  /// The duration of the animation on [AnimatedProgressBar]
+  /// The duration, in milliseconds, of the animation on [AnimatedProgressBar]
   static const Duration intrinsicAnimationDuration = Duration(milliseconds: 1300);
 
   @override
@@ -43,9 +43,16 @@ class AnimatedProgressBar extends StatelessWidget {
             padding: const EdgeInsets.all(2),
             // Animate the progress bar
             child: TweenAnimationBuilder(
-              tween: Tween<double>(begin: 0, end: progress),
+              tween: Tween<double>(
+                begin: 0,
+                end: progress,
+              ),
               duration: intrinsicAnimationDuration,
-              builder: (BuildContext context, double progress, _) {
+              builder: (
+                BuildContext context,
+                double progress,
+                _,
+              ) {
                 // Inner bar
                 return FractionallySizedBox(
                   alignment: Alignment.centerLeft,
