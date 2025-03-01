@@ -10,9 +10,6 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/painting.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
 import 'package:zombie_conga_flame/game/components/background_parallax_component.dart';
-import 'package:zombie_conga_flame/game/entities/cat/cat.dart';
-import 'package:zombie_conga_flame/game/entities/zombie/zombie.dart';
-
 import 'package:zombie_conga_flame/game/game.dart';
 import 'package:zombie_conga_flame/l10n/l10n.dart';
 
