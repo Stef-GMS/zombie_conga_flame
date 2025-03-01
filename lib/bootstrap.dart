@@ -39,7 +39,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     WidgetsFlutterBinding.ensureInitialized();
     await windowManager.ensureInitialized();
 
-    await windowManager.setMinimumSize(const Size(512, 384));
+    await windowManager.setMinimumSize(const Size(1024, 768));
     await windowManager.setMaximumSize(const Size(2048, 1536));
     await windowManager.setSize(const Size(1024, 768));
     await windowManager.setAspectRatio(16.0 / 9.0); // aspect ratio supported, 16:9 (1.77)
