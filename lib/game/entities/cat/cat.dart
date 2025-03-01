@@ -39,6 +39,16 @@ class CatComponent extends SpriteComponent with HasGameRef<ZombieCongaGame>, Col
       FlameAudio.play(Globals.hitCatSound);
 
       removeFromParent(); //
+      add(ColorEffect(
+        Colors.green,
+        opacityFrom: 0.2,
+        opacityTo: 0.8,
+        //const Offset(0, 0.9),
+        EffectController(
+          duration: 0.2,
+          alternate: false,
+        ),
+      ));
 
       gameRef.score += 1;
       gameRef.add(CatComponent());
