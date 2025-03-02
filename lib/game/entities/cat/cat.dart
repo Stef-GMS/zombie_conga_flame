@@ -10,8 +10,13 @@ import 'package:zombie_conga_flame/game/zombie_conga_game.dart';
 import 'package:flutter/material.dart';
 
 import 'package:zombie_conga_flame/constants/globals.dart';
+import 'package:zombie_conga_flame/game/entities/zombie/zombie.dart';
+import 'package:zombie_conga_flame/game/zombie_conga_game.dart';
 
 class Cat extends SpriteComponent //
+    with
+        HasGameRef<ZombieCongaGame>,
+        CollisionCallbacks {
   final double _spriteHeight = 156;
   final double _spriteWidth = 146;
 

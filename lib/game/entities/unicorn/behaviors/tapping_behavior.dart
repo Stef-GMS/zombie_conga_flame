@@ -6,7 +6,10 @@ import 'package:zombie_conga_flame/game/entities/unicorn/unicorn.dart';
 import 'package:zombie_conga_flame/game/game.dart';
 import 'package:zombie_conga_flame/gen/assets.gen.dart';
 
-class TappingBehavior extends Behavior<Unicorn> with TapCallbacks, HasGameRef<ZombieCongaGame> {
+class TappingBehavior extends Behavior<Unicorn> //
+    with
+        TapCallbacks,
+        HasGameRef<ZombieCongaGame> {
   @override
   bool containsLocalPoint(Vector2 point) {
     return parent.containsLocalPoint(point);
