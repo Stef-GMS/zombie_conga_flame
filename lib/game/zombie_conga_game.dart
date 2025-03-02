@@ -97,8 +97,14 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   } // onLoad()
 
   // spawnCat() {
-  //   add(CatComponent());
-  //   Timer(Duration(milliseconds: Random().nextInt(1000) + 1000), spawnCat);
+  //   add(
+  //     CatComponent(),
+  //   );
+  //
+  //   Timer(
+  //     Duration(milliseconds: Random().nextInt(1000) + 1000),
+  //     spawnCat,
+  //   );
   // }
 
   // dt = delta time; the time since last update
