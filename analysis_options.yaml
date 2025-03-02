@@ -5,3 +5,4 @@ analyzer:
 linter:
   rules:
     public_member_api_docs: false
+    avoid_redundant_argument_values: false

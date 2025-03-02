@@ -10,9 +10,6 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/painting.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
 import 'package:zombie_conga_flame/game/components/background_parallax_component.dart';
-import 'package:zombie_conga_flame/game/entities/cat/cat.dart';
-import 'package:zombie_conga_flame/game/entities/zombie/zombie.dart';
-
 import 'package:zombie_conga_flame/game/game.dart';
 import 'package:zombie_conga_flame/l10n/l10n.dart';
 
@@ -36,11 +33,11 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
     //add(BackgroundComponent());
     add(MyParallaxComponent());
-    add(ZombieComponent(joystick: joystick));
+    add(Zombie(joystick: joystick));
     //add(ZombieComponentSpawning(joystick: joystick));
     add(joystick);
-    add(CatComponent());
-    //add(CatComponentSpawning());
+    //add(CatComponent());
+    add(Cat());
     //spawnCat();
     //add(EnemyComponent());
 
@@ -100,8 +97,14 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   } // onLoad()
 
   // spawnCat() {
-  //   add(CatComponent());
-  //   Timer(Duration(milliseconds: Random().nextInt(1000) + 1000), spawnCat);
+  //   add(
+  //     CatComponent(),
+  //   );
+  //
+  //   Timer(
+  //     Duration(milliseconds: Random().nextInt(1000) + 1000),
+  //     spawnCat,
+  //   );
   // }
 
   // dt = delta time; the time since last update

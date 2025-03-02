@@ -1,20 +1,27 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flame/collisions.dart';
-import 'package:flame/components.dart';
+import 'package:flame/components.dart' hide Timer; // hide Timer is because Flame has Timer and we want Dart one
 import 'package:flame/effects.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:flutter/material.dart';
+import 'package:zombie_conga_flame/constants/globals.dart';
 import 'package:zombie_conga_flame/game/entities/zombie/zombie.dart';
 import 'package:zombie_conga_flame/game/zombie_conga_game.dart';
-import 'package:flutter/material.dart';
 
-import 'package:zombie_conga_flame/constants/globals.dart';
-
-class CatComponent extends SpriteComponent with HasGameRef<ZombieCongaGame>, CollisionCallbacks {
+class Cat extends SpriteComponent //
+    with
+        HasGameRef<ZombieCongaGame>,
+        CollisionCallbacks {
   final double _spriteHeight = 156;
   final double _spriteWidth = 146;
 
   final Random _random = Random();
+
+  Zombie? zombie;
+
+  int trainLocation = -1;
 
   @override
   Future<void> onLoad() async {
@@ -29,19 +36,67 @@ class CatComponent extends SpriteComponent with HasGameRef<ZombieCongaGame>, Col
 
     add(CircleHitbox());
 
+    Timer(
+      Duration(milliseconds: Random().nextInt(3000) + 5000),
+      removeCat,
+    );
+
     // position = gameRef.size / 2;
+  }
+
+  void removeCat() {
+    if (!captured) {
+      removeFromParent();
+    }
+  }
+
+  bool get captured {
+    return zombie != null;
+  }
+
+  @override
+  void update(dt) {
+    super.update(dt);
+    if (captured) {
+      position.y = zombie!.position.y;
+      position.x = zombie!.position.x - 50 - (trainLocation * 15);
+      //zombie!.opacity = 0.5;
+    }
   }
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
-    if (other is ZombieComponent) {
+
+    if (captured) {
+      return;
+    }
+
+    if (other is Zombie) {
+      zombie = other;
+
       FlameAudio.play(Globals.hitCatSound);
 
-      removeFromParent(); //
+      zombie!.catCount += 1;
 
+      add(ColorEffect(
+        // Colors.green,
+        const Color(0xFF00FF00),
+        opacityFrom: 0.1,
+        opacityTo: 0.5,
+        //const Offset(0, 0.9),
+        EffectController(
+          duration: 0.2,
+          alternate: false,
+        ),
+      ));
+
+      trainLocation = zombie!.catCount;
+      //parent!.addToParent(this);
+
+      //removeFromParent(); //
       gameRef.score += 1;
-      gameRef.add(CatComponent());
+      gameRef.add(Cat());
     }
   }
 

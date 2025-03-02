@@ -11,11 +11,11 @@ enum MovementState {
   move3,
 }
 
-class ZombieComponent extends SpriteGroupComponent<MovementState>
+class Zombie extends SpriteGroupComponent<MovementState>
     with //
         HasGameRef<ZombieCongaGame>,
         DragCallbacks {
-  ZombieComponent({
+  Zombie({
     required this.joystick,
   });
 
@@ -24,7 +24,9 @@ class ZombieComponent extends SpriteGroupComponent<MovementState>
   final double _spriteHeight = 204;
 
   /// Max speed Zombie will move
-  final double _speed = 250;
+  final double _speed = 350; //250;
+
+  int catCount = 0;
 
   /// Device boundaries
   late double _leftBound;
