@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/components.dart' hide Timer; // hide Timer is because Flame has Timer and we want Dart one
 import 'package:flame/effects.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:zombie_conga_flame/game/entities/zombie/zombie.dart';
