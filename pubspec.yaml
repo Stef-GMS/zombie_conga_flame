@@ -39,6 +39,3 @@ flutter:
     - assets/audio/
     - assets/images/
     - assets/licenses/poppins/
-
-  shaders:
-    - assets/shaders/my_shader.frag
