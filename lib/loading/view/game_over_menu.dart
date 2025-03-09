@@ -7,7 +7,7 @@ class GameOverMenu extends StatelessWidget {
     required this.gameRef,
     super.key,
   });
-  static const String ID = 'GameOverMenu';
+  static const String id = 'GameOverMenu';
   final ZombieCongaGame gameRef;
 
   @override
@@ -48,7 +48,7 @@ class GameOverMenu extends StatelessWidget {
                   height: 100,
                   child: ElevatedButton(
                     onPressed: () {
-                      gameRef.overlays.remove(GameOverMenu.ID);
+                      gameRef.overlays.remove(GameOverMenu.id);
                       gameRef
                         ..reset()
                         ..resumeEngine();

@@ -14,8 +14,6 @@ class TitlePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -38,7 +36,7 @@ class TitlePage extends StatelessWidget {
                       //style: Color(0xFFFFD54F),
                       onPressed: () {
                         Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
+                          MaterialPageRoute<void>(
                             builder: (context) => const GamePlay(),
                           ),
                         );

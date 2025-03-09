@@ -17,7 +17,7 @@ class GamePlay extends StatelessWidget {
         child: GameWidget(
           game: _zombieCongaGame,
           overlayBuilderMap: {
-            GameOverMenu.ID: (
+            GameOverMenu.id: (
               BuildContext context,
               ZombieCongaGame gameRef,
             ) =>

@@ -26,10 +26,10 @@ class ApplyImageShader extends SpriteComponent //
       ..setFloat(0, size.x)
       ..setFloat(1, size.y)
       // Set the color
-      ..setFloat(2, (color.red / 255).toDouble()) // r
-      ..setFloat(3, (color.green / 255).toDouble()) // g
-      ..setFloat(4, (color.blue / 255).toDouble()) // b
-      ..setFloat(5, (color.alpha / 255).toDouble()); // a
+      ..setFloat(2, (color.r))
+      ..setFloat(3, (color.g))
+      ..setFloat(4, (color.b))
+      ..setFloat(5, (color.a));
 
     paint.shader = shader;
   }

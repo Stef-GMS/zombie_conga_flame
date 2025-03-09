@@ -42,10 +42,10 @@ class Zombie extends SpriteGroupComponent<MovementState>
     await super.onLoad();
 
     // Sprites
-    Sprite zombieIdle = await gameRef.loadSprite(Globals.zombieIdle);
-    Sprite zombieMove1 = await gameRef.loadSprite(Globals.zombieMove1);
-    Sprite zombieMove2 = await gameRef.loadSprite(Globals.zombieMove2);
-    Sprite zombieMove3 = await gameRef.loadSprite(Globals.zombieMove3);
+    final zombieIdle = await gameRef.loadSprite(Globals.zombieIdle);
+    final zombieMove1 = await gameRef.loadSprite(Globals.zombieMove1);
+    final zombieMove2 = await gameRef.loadSprite(Globals.zombieMove2);
+    final zombieMove3 = await gameRef.loadSprite(Globals.zombieMove3);
 
     // Sprite states
     sprites = {
@@ -69,13 +69,13 @@ class Zombie extends SpriteGroupComponent<MovementState>
     // Set sprite dimensions for screen
     height = _spriteHeight / 2.5;
     width = _spriteWidth / 2.5;
-    anchor = Anchor.center;
+    anchor = Anchor.centerLeft;
 
     add(CircleHitbox());
   }
 
   @override
-  void update(dt) {
+  void update(double dt) {
     super.update(dt);
 
     if (joystick.direction == JoystickDirection.idle) {
@@ -98,7 +98,7 @@ class Zombie extends SpriteGroupComponent<MovementState>
       y = _downBound - 1;
     }
 
-    bool movingLeft = joystick.relativeDelta[0] < 0;
+    final movingLeft = joystick.relativeDelta[0] < 0;
 
     if (movingLeft) {
       current = MovementState.move1;

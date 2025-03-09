@@ -1,27 +1,23 @@
-import 'package:audioplayers/audioplayers.dart';
+import 'dart:async';
+import 'dart:math';
 
-import 'package:flame/cache.dart';
-import 'package:flame/components.dart';
+import 'package:flame/components.dart'
+    hide Timer; // hide Timer is because Flame has Timer and we want Dart one
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
-import 'package:flame/parallax.dart';
 import 'package:flame_audio/flame_audio.dart';
 
-import 'package:flutter/painting.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
 import 'package:zombie_conga_flame/game/components/background_parallax_component.dart';
 import 'package:zombie_conga_flame/game/game.dart';
-import 'package:zombie_conga_flame/l10n/l10n.dart';
 
 class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   int score = 0;
-  final int _timeLimit = 30;
-
-  late Timer _timer;
-
-  late int _remainingTime = _timeLimit;
-  late TextComponent _scoreText;
-  late TextComponent _timeText;
+  // final int _timeLimit = 30;
+  // late Timer _timer;
+  // late int _remainingTime = _timeLimit;
+  // late TextComponent _scoreText;
+  // late TextComponent _timeText;
 
   @override
   Future<void> onLoad() async {
@@ -38,7 +34,7 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     add(joystick);
     //add(CatComponent());
     add(Cat());
-    //spawnCat();
+    spawnCat();
     //add(EnemyComponent());
 
     await FlameAudio.audioCache.loadAll(
@@ -96,21 +92,19 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     // _timer.start();
   } // onLoad()
 
-  // spawnCat() {
-  //   add(
-  //     CatComponent(),
-  //   );
-  //
-  //   Timer(
-  //     Duration(milliseconds: Random().nextInt(1000) + 1000),
-  //     spawnCat,
-  //   );
-  // }
+  final random = Random();
+  void spawnCat() {
+    add(Cat());
+    Timer(
+      const Duration(seconds: 1) + Duration(milliseconds: random.nextInt(1000)),
+      spawnCat,
+    );
+  }
 
   // dt = delta time; the time since last update
 
   void reset() {
     score = 0;
-    _remainingTime = _timeLimit;
+    // _remainingTime = _timeLimit;
   }
 } // ZombieCongaGame

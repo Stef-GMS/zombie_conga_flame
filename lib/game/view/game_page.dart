@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zombie_conga_flame/game/game.dart';
 import 'package:zombie_conga_flame/gen/assets.gen.dart';
-import 'package:zombie_conga_flame/l10n/l10n.dart';
 import 'package:zombie_conga_flame/loading/cubit/cubit.dart';
 
 class GamePage extends StatelessWidget {
@@ -58,16 +57,10 @@ class _GameViewState extends State<GameView> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.bodySmall!.copyWith(
-          color: Colors.white,
-          fontSize: 4,
-        );
-
     _game ??= widget.game ??
         ZombieCongaGame(
             // l10n: context.l10n,
             // effectPlayer: context.read<AudioCubit>().effectPlayer,
-            // textStyle: textStyle,
             // images: context.read<PreloadCubit>().images,
             );
 
