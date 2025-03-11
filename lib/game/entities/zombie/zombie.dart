@@ -117,24 +117,28 @@ class Zombie extends SpriteGroupComponent<MovementState>
 
   void _updateTrain(double dt) {
     final offset = Vector2(-20.0, 0.0);
+    const actionDuration = 0.3;
+    const catMovePointsPerSec = 200.0;
 
-    var target = position + offset;
+    var targetPosition = position + offset;
 
     for (final cat in train) {
       //
       if (cat.children.any((component) => component is MoveByEffect) == false) {
-        final direction = (target - cat.position).normalized();
+        //
+        final direction = (targetPosition - cat.position).normalized();
 
-        final deltaPos = direction * 205.0 * 0.3; // n = pixels per sec; ex. n = 100.0
+        final deltaPos =
+            direction * catMovePointsPerSec * actionDuration; // n = pixels per sec; ex. n = 100.0
 
         cat.add(
           MoveByEffect(
             deltaPos,
-            EffectController(duration: 0.3),
+            EffectController(duration: actionDuration),
           ),
         );
       }
-      target = cat.position + offset;
+      targetPosition = cat.position + offset;
     }
   }
 }
