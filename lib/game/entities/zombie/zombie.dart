@@ -1,5 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
 import 'package:zombie_conga_flame/game/entities/cat/cat.dart';
@@ -120,8 +121,16 @@ class Zombie extends SpriteGroupComponent<MovementState>
     var target = position + offset;
 
     for (final (index, cat) in train.indexed) {
-      final direction = (target - cat.position).normalized();
-      cat.position += direction * 100.0 * dt; // n = pixels per sec; ex. n = 100.0
+      if (cat.children.any((component) => component is MoveByEffect) == false) {
+        final direction = (target - cat.position).normalized();
+        final deltaPos = direction * 200.0 * 0.3; // n = pixels per sec; ex. n = 100.0
+        cat.add(
+          MoveByEffect(
+            deltaPos,
+            EffectController(duration: 0.3),
+          ),
+        );
+      }
       target = cat.position + offset;
     }
   }
