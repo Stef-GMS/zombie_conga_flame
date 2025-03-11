@@ -2,6 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
+import 'package:zombie_conga_flame/game/entities/cat/cat.dart';
 import 'package:zombie_conga_flame/game/zombie_conga_game.dart';
 
 enum MovementState {
@@ -26,7 +27,7 @@ class Zombie extends SpriteGroupComponent<MovementState>
   /// Max speed Zombie will move
   final double _speed = 350; //250;
 
-  int catCount = 0;
+  final train = <Cat>[];
 
   /// Device boundaries
   late double _leftBound;
@@ -77,7 +78,11 @@ class Zombie extends SpriteGroupComponent<MovementState>
   @override
   void update(double dt) {
     super.update(dt);
+    _updatePosition(dt);
+    _updateTrain(dt);
+  }
 
+  void _updatePosition(double dt) {
     if (joystick.direction == JoystickDirection.idle) {
       current = MovementState.idle;
       return;
@@ -106,6 +111,18 @@ class Zombie extends SpriteGroupComponent<MovementState>
       current = MovementState.move2;
     }
 
-    position.add(joystick.relativeDelta * _speed * dt);
+    position += joystick.relativeDelta * _speed * dt;
+  }
+
+  void _updateTrain(double dt) {
+    final offset = Vector2(-20.0, 0.0);
+
+    var target = position + offset;
+
+    for (final (index, cat) in train.indexed) {
+      final direction = (target - cat.position).normalized();
+      cat.position += direction * 100.0 * dt; // n = pixels per sec; ex. n = 100.0
+      target = cat.position + offset;
+    }
   }
 }

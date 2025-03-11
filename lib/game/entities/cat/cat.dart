@@ -22,8 +22,6 @@ class Cat extends SpriteComponent //
 
   Zombie? zombie;
 
-  int trainLocation = -1;
-
   @override
   Future<void> onLoad() async {
     await super.onLoad();
@@ -55,9 +53,8 @@ class Cat extends SpriteComponent //
   @override
   void update(double dt) {
     super.update(dt);
-    if (captured) {
-      position.y = zombie!.height * 0.5;
-      position.x = 20.0 - (trainLocation * 15.0);
+    if (!captured) {
+      // move cat here
     }
   }
 
@@ -71,11 +68,9 @@ class Cat extends SpriteComponent //
     }
 
     if (other is Zombie) {
+      // this cat is now owned by the zombie
       zombie = other;
-      parent = zombie;
-
-      trainLocation = zombie!.catCount;
-      zombie!.catCount += 1;
+      zombie!.train.add(this);
 
       gameRef.score += 1;
       gameRef.add(Cat());
