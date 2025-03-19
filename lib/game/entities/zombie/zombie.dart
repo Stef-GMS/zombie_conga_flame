@@ -118,7 +118,7 @@ class Zombie extends SpriteGroupComponent<MovementState>
   void _updateTrain(double dt) {
     final offset = Vector2(-20.0, 0.0);
     const actionDuration = 0.3;
-    const catMovePointsPerSec = 200.0;
+    const catMovePointsPerSec = 210.0;
 
     var targetPosition = position + offset;
 
