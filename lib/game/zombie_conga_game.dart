@@ -74,20 +74,6 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
     add(ScreenHitbox());
 
-    // _scoreText = TextComponent(
-    //   text: 'Score: $score',
-    //   position: Vector2(40, 10),
-    //   anchor: Anchor.topLeft,
-    //   textRenderer: TextPaint(
-    //     style: TextStyle(
-    //       color: BasicPalette.white.color,
-    //       fontSize: 50,
-    //     ),
-    //   ),
-    // );
-
-    //_scoreText.text = '2 Score new: $score';
-
     // Add Score TextComponent.
     add(_catCount);
 
