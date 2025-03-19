@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flame/cache.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zombie_conga_flame/l10n/l10n.dart';
 import 'package:zombie_conga_flame/loading/loading.dart';
+
+late String deviceSize; // = 'medium';
+late double width;
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -30,6 +35,40 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Determine size of screen
+    // final width = MediaQuery.of(context).size.shortestSide;
+    width = MediaQuery.of(context).size.longestSide;
+
+    deviceSize = width >= 1024
+        ? 'extra large'
+        : width >= 700
+            ? 'large'
+            : width > 380
+                ? 'medium'
+                : 'small';
+
+    print('deviceSize: $deviceSize, width: $width');
+
+    // final scaleMultiplier = deviceSize == 'extra large'
+    //     ? 1.5
+    //     : deviceSize == 'large'
+    //         ? 1.0
+    //         : deviceSize == 'small'
+    //             ? -0.10
+    //             : 0.0;
+    //
+    // final value = 20.0 * scaleMultiplier;
+    // print('scaleMultiplier: $scaleMultiplier  value: $value');
+    //
+    // final textSize = 20.0 + (20.0 * scaleMultiplier);
+    // print('textSize: $textSize');
+    //
+    // final isTablet = MediaQuery.of(context).size.shortestSide >= 700;
+    // print('isTablet: $isTablet');
+    //
+    // final isSmallPhone = MediaQuery.of(context).size.shortestSide <= 380;
+    // print('isSmallPhone: $isSmallPhone');
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
