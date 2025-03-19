@@ -72,7 +72,8 @@ class Cat extends SpriteComponent //
       zombie = other;
       zombie!.train.add(this);
 
-      gameRef.score += 1;
+      gameRef.cats += 1;
+
       gameRef.add(Cat());
 
       FlameAudio.play(Globals.hitCatSound);
