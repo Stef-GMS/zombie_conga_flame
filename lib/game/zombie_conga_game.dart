@@ -5,19 +5,49 @@ import 'package:flame/components.dart'
     hide Timer; // hide Timer is because Flame has Timer and we want Dart one
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
+import 'package:flame/palette.dart';
+import 'package:flame/text.dart';
 import 'package:flame_audio/flame_audio.dart';
-
+import 'package:zombie_conga_flame/app/view/app.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
 import 'package:zombie_conga_flame/game/components/background_parallax_component.dart';
+// import 'package:zombie_conga_flame/game/entities/cat/cat.dart';
 import 'package:zombie_conga_flame/game/game.dart';
 
 class ZombieCongaGame extends FlameGame with HasCollisionDetection {
-  int score = 0;
+  int cats = 0;
+  int lives = 5;
   // final int _timeLimit = 30;
   // late Timer _timer;
   // late int _remainingTime = _timeLimit;
-  // late TextComponent _scoreText;
-  // late TextComponent _timeText;
+
+  /// Text UI component for keeping track of score
+  final TextComponent _catCount = // Configure TextComponent
+      TextComponent(
+    //text: '',  // text will be set later
+    position: Vector2(5, 0),
+    anchor: Anchor.topLeft,
+    textRenderer: TextPaint(
+      style: TextStyle(
+        color: BasicPalette.white.color,
+        fontSize: 50,
+      ),
+    ),
+  );
+
+  /// Text UI component for keeping track of score
+  final TextComponent _livesCount = // Configure TextComponent
+      TextComponent(
+    //text: '',  // text will be set later
+    position: Vector2(width - 50, 0),
+    anchor: Anchor.topRight,
+    textRenderer: TextPaint(
+      style: TextStyle(
+        color: BasicPalette.white.color,
+        fontSize: 50,
+      ),
+    ),
+  );
 
   @override
   Future<void> onLoad() async {
@@ -51,43 +81,18 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     //   textRenderer: TextPaint(
     //     style: TextStyle(
     //       color: BasicPalette.white.color,
-    //       fontSize: 30,
+    //       fontSize: 50,
     //     ),
     //   ),
     // );
-    //
-    // add(_scoreText);
-    //
-    // _timeText = TextComponent(
-    //   text: 'Time: $_remainingTime',
-    //   position: Vector2(size.x - 40, 10),
-    //   anchor: Anchor.topRight,
-    //   textRenderer: TextPaint(
-    //     style: TextStyle(
-    //       color: BasicPalette.white.color,
-    //       fontSize: 30,
-    //     ),
-    //   ),
-    // );
-    //
-    // add(_timeText);
-    //
-    // _timer = Timer(
-    //   1,
-    //   repeat: true,
-    //   onTick: () {
-    //     if (_remainingTime == 0) {
-    //       // Pause = game.
-    //       pauseEngine();
-    //       overlays.add(GameOverMenu.ID);
-    //     } else {
-    //       // Decrease time by one second.
-    //       _remainingTime -= 1;
-    //     }
-    //   },
-    // );
-    //
-    // _timer.start();
+
+    //_scoreText.text = '2 Score new: $score';
+
+    // Add Score TextComponent.
+    add(_catCount);
+
+    // Add Score TextComponent.
+    add(_livesCount);
   } // onLoad()
 
   final random = Random();
@@ -101,8 +106,29 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
   // dt = delta time; the time since last update
 
+  @override
+  void update(double dt) {
+    super.update(dt);
+
+    //print(' 33333 deviceSize: $deviceSize, width: $width');
+
+    _catCount.text = 'Cats: $cats';
+
+    if (lives < 5) {
+      _livesCount.textRenderer = TextPaint(
+        style: TextStyle(
+          color: BasicPalette.orange.color,
+          fontSize: 50,
+        ),
+      );
+    }
+
+    _livesCount
+      ..text = 'Lives: $lives'
+      ..position = Vector2(width - 20.0, 0);
+  }
+
   void reset() {
-    score = 0;
-    // _remainingTime = _timeLimit;
+    cats = 0;
   }
 } // ZombieCongaGame
