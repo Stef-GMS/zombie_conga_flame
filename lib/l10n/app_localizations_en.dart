@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get startVeryGoodGame => 'Start the Very Good Game';
+  String get startVeryGoodGame => 'Start Zombie Conga Flame';
 
   @override
   String get titleAppBarTitle => 'Zombie Conga Flame';
@@ -28,7 +28,7 @@ class AppLocalizationsEn extends AppLocalizations {
       loadingPhase,
       {
         'audio': 'Delightful music',
-        'images': 'Beautiful scenery',
+        'images': 'Zombie Conga Flame',
         'other': ' ',
       },
     );

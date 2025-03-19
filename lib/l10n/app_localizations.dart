@@ -96,7 +96,7 @@ abstract class AppLocalizations {
   /// The initial start button of the game application
   ///
   /// In en, this message translates to:
-  /// **'Start the Very Good Game'**
+  /// **'Start Zombie Conga Flame'**
   String get startVeryGoodGame;
 
   /// Text shown in the AppBar of the Title Page
@@ -120,7 +120,7 @@ abstract class AppLocalizations {
   /// Loading phases
   ///
   /// In en, this message translates to:
-  /// **'{loadingPhase, select, audio{Delightful music} images{Beautiful scenery} other{ }}'**
+  /// **'{loadingPhase, select, audio{Delightful music} images{Zombie Conga Flame} other{ }}'**
   String loadingPhaseLabel(String loadingPhase);
 
   /// Text for the counter component
