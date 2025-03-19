@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "startVeryGoodGame": "Start the Very Good Game",
+  "startVeryGoodGame": "Start Zombie Conga Flame",
   "@startVeryGoodGame": {
     "description": "The initial start button of the game application"
   },
@@ -23,7 +23,7 @@
       }
     }
   },
-  "loadingPhaseLabel": "{loadingPhase, select, audio{Delightful music} images{Beautiful scenery} other{ }}",
+  "loadingPhaseLabel": "{loadingPhase, select, audio{Delightful music} images{Zombie Conga Flame} other{ }}",
   "@loadingPhaseLabel": {
     "description": "Loading phases",
     "placeholders": {
