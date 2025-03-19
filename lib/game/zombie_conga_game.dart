@@ -110,8 +110,6 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   void update(double dt) {
     super.update(dt);
 
-    //print(' 33333 deviceSize: $deviceSize, width: $width');
-
     _catCount.text = 'Cats: $cats';
 
     if (lives < 5) {
