@@ -53,7 +53,6 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   Future<void> onLoad() async {
     await super.onLoad();
 
-    //debugMode = true;  //displays boxs and circles around components to help degub
     //debugMode = true; //displays boxes and circles around components to help debug
 
     await Flame.device.setLandscape();
