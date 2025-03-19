@@ -35,6 +35,7 @@ import 'package:zombie_conga_flame/gen/assets.gen.dart';
 // }
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+  // Check to see if device is Desktop and if so then set window sizes and title
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     WidgetsFlutterBinding.ensureInitialized();
     await windowManager.ensureInitialized();
