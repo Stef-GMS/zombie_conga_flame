@@ -145,4 +145,10 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   void catCollidesWithZombie() {
     add(Cat());
   }
+
+  void enemyCollidesWithZombie() {
+    zombie
+      ..removeCatsFromTrain(2)
+      ..makeInvincible();
+  }
 } // ZombieCongaGame
