@@ -87,8 +87,8 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     add(_livesCount);
   } // onLoad()
 
-  final random = Random();
-  void spawnCat() {
+  final _random = Random();
+
   void spawnCats() {
     //
     // add a cat to game
