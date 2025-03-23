@@ -84,6 +84,7 @@ class Zombie extends SpriteGroupComponent<MovementState>
   }
 
   void _updatePosition(double dt) {
+    // Set joystick direction and how much to move based on direction
     if (joystick.direction == JoystickDirection.idle) {
       current = MovementState.idle;
       return;
@@ -124,10 +125,13 @@ class Zombie extends SpriteGroupComponent<MovementState>
 
     for (final cat in train) {
       //
+      // Check to see if the cat has any children (other cats in the train)
       if (cat.children.any((component) => component is MoveByEffect) == false) {
         //
+        // Set the direction the cat needs to move
         final direction = (targetPosition - cat.position).normalized();
 
+        // Set the position delta the cat needs to move
         final deltaPos =
             direction * catMovePointsPerSec * actionDuration; // n = pixels per sec; ex. n = 100.0
 
