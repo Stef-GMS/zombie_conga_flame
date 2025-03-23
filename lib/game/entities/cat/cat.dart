@@ -88,9 +88,9 @@ class Cat extends SpriteComponent //
     super.onCollision(intersectionPoints, other);
   }
 
-  Vector2 _getRandomPosition() {
-    final x = _random.nextInt(gameRef.size.x.toInt()).toDouble();
-    final y = _random.nextInt(gameRef.size.y.toInt()).toDouble();
+  Vector2 _getCatRandomPosition() {
+    final x = _random.nextDouble() * gameRef.size.x;
+    final y = _random.nextDouble() * gameRef.size.y;
     return Vector2(x, y);
   }
 }
