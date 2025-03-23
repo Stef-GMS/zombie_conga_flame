@@ -135,6 +135,7 @@ class Zombie extends SpriteGroupComponent<MovementState>
         final deltaPos =
             direction * catMovePointsPerSec * actionDuration; // n = pixels per sec; ex. n = 100.0
 
+        // Add cat to train
         cat.add(
           MoveByEffect(
             deltaPos,
@@ -142,7 +143,29 @@ class Zombie extends SpriteGroupComponent<MovementState>
           ),
         );
       }
+
+      // Set the position for cat in relation to Zombie train of cats
       targetPosition = cat.position + offset;
     }
+  }
+
+  void removeCatsFromTrain(int count) {
+    for (var i = 0; i < count && train.isNotEmpty; i++) {
+      train.removeLast().removeFromParent();
+    }
+  }
+
+  // if you have parameters then you must use function
+  // int getCatCountInTrain() => train.length;
+
+  // since there are no parameters, use a property by using a "getter"
+  // if you need to do multiple steps then use a function not a getter
+  // getter should not have side effects that change state or
+  int get catCountInTrain => train.length;
+
+  //set catCountInTrain(int value){}
+
+  void addCatToTrain(Cat cat) {
+    train.add(cat);
   }
 }

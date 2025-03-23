@@ -89,10 +89,22 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
   final random = Random();
   void spawnCat() {
+  void spawnCats() {
+    //
+    // add a cat to game
     add(Cat());
+
+    // set a timer to spawn more cats
     Timer(
       const Duration(seconds: 1) + Duration(milliseconds: random.nextInt(1000)),
       spawnCat,
+      const Duration(seconds: 1) +
+          Duration(
+            milliseconds: _random.nextInt(1000),
+          ),
+      spawnCats,
+    );
+  }
     );
   }
 
@@ -103,6 +115,8 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     super.update(dt);
 
     _catCount.text = 'Cats: $cats';
+    // _catCount.text = 'Cats: ${zombie.catCountInTrain()}';
+    _catCount.text = 'Cats: ${zombie.catCountInTrain}';
 
     if (lives < 5) {
       _livesCount.textRenderer = TextPaint(
@@ -127,5 +141,8 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
     // example of using a setter to set a zombie property
     //zombie.catCountInTrain = 100;
+  }
+  void catCollidesWithZombie() {
+    add(Cat());
   }
 } // ZombieCongaGame

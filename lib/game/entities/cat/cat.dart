@@ -68,16 +68,16 @@ class Cat extends SpriteComponent //
     }
 
     if (other is Zombie) {
-      // this cat is now owned by the zombie
-      zombie = other;
-      zombie!.train.add(this);
+      //
+      // Add Cat Train behind Zombie
+      other.addCatToTrain(this);
+      gameRef.catCollidesWithZombie();
+      captured = true;
 
-      gameRef.cats += 1;
-
-      gameRef.add(Cat());
-
+      //
       FlameAudio.play(Globals.hitCatSound);
 
+      // When Zombie hits cat, turn Cat green.
       // colorFilter has a built-in shader, so don't need to create a Shader
       getPaint().colorFilter = const ColorFilter.mode(
         Color.from(alpha: 1.0, red: 0.0, green: 1.0, blue: 0.0),
