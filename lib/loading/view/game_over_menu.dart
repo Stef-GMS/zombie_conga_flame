@@ -37,7 +37,7 @@ class GameOverMenu extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 50),
                   child: Text(
-                    'Score: ${gameRef.cats}',
+                    'Score: ${gameRef.zombie.catCountInTrain}',
                     style: const TextStyle(
                       fontSize: 50,
                     ),
