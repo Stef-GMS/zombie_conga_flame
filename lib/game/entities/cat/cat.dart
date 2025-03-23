@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart'
     hide Timer; // hide Timer is because Flame has Timer and we want Dart one
+import 'package:flame/effects.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
@@ -33,6 +34,32 @@ class Cat extends SpriteComponent //
     anchor = Anchor.centerRight;
 
     add(CircleHitbox());
+
+    scale = Vector2.zero();
+    angle = -pi / 16;
+    final appear = Vector2.all(1.0);
+    const leftWiggle = pi / 8;
+    const rightWiggle = -pi / 8;
+    final scaleUp = Vector2.all(1.2);
+    final scaleDown = Vector2.all(1.0);
+    final actions = [
+      ScaleEffect.to(appear, EffectController(duration: 0.5)),
+      RotateEffect.by(leftWiggle, EffectController(duration: 0.5)),
+      RotateEffect.by(rightWiggle, EffectController(duration: 0.5)),
+      ScaleEffect.to(scaleUp, EffectController(duration: 0.25)),
+      ScaleEffect.to(scaleDown, EffectController(duration: 0.25)),
+      ScaleEffect.to(scaleUp, EffectController(duration: 0.25)),
+      ScaleEffect.to(scaleDown, EffectController(duration: 0.25)),
+      RotateEffect.by(leftWiggle, EffectController(duration: 0.5)),
+      RotateEffect.by(rightWiggle, EffectController(duration: 0.5)),
+    ];
+
+    final sequence = SequenceEffect(
+      actions,
+      //EffectController(duration: 5.0),
+    );
+
+    add(sequence);
 
     Timer(
       Duration(milliseconds: Random().nextInt(3000) + 5000),
