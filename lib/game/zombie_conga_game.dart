@@ -63,14 +63,6 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
     await Flame.device.setLandscape();
 
-    //add(BackgroundComponent());
-    add(MyParallaxComponent());
-    add(Zombie(joystick: joystick));
-    add(joystick);
-    add(Cat());
-    spawnCat();
-    //add(EnemyComponent());
-
     await FlameAudio.audioCache.loadAll(
       [
         Globals.hitCatSound,
@@ -78,17 +70,14 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
       ],
     );
 
-    //add(BackgroundComponent());
     add(MyParallaxComponent());
 
     add(zombie);
     add(joystick);
-    // add(Cat());
-    spawnCats();
-    //add(Enemy());
-    spawnEnemy();
 
-    //add(ScreenHitbox());
+    spawnCats();
+
+    spawnEnemy();
 
     // Add Score TextComponent.
     add(_catCount);
@@ -144,7 +133,6 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   void update(double dt) {
     super.update(dt);
 
-    _catCount.text = 'Cats: $cats';
     // _catCount.text = 'Cats: ${zombie.catCountInTrain()}';
     _catCount.text = 'Cats: ${zombie.catCountInTrain}';
 
