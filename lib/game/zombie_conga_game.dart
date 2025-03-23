@@ -16,7 +16,11 @@ import 'package:zombie_conga_flame/game/game.dart';
 
 class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   int cats = 0;
+  ZombieCongaGame() {
+    zombie = Zombie(joystick: joystick);
+  }
   int lives = 5;
+  late Zombie zombie;
   // final int _timeLimit = 30;
   // late Timer _timer;
   // late int _remainingTime = _timeLimit;
@@ -73,6 +77,8 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     );
 
     add(ScreenHitbox());
+    add(zombie);
+    add(joystick);
 
     // Add Score TextComponent.
     add(_catCount);
@@ -113,6 +119,13 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   }
 
   void reset() {
-    cats = 0;
+    // example of using a function
+    // zombie.removeCatsFromTrain(zombie.catCountInTrain());
+
+    // example of using a getter
+    zombie.removeCatsFromTrain(zombie.catCountInTrain);
+
+    // example of using a setter to set a zombie property
+    //zombie.catCountInTrain = 100;
   }
 } // ZombieCongaGame
