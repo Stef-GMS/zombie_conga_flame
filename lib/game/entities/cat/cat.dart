@@ -29,7 +29,7 @@ class Cat extends SpriteComponent //
     sprite = await gameRef.loadSprite(Globals.catSprite);
     width = _spriteWidth / 2.5;
     height = _spriteHeight / 2.5;
-    position = _getRandomPosition();
+    position = _getCatRandomPosition();
     anchor = Anchor.centerRight;
 
     add(CircleHitbox());
