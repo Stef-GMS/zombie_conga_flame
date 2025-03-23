@@ -73,17 +73,13 @@ class Cat extends SpriteComponent //
     }
   }
 
-  bool get captured {
-    return zombie != null;
-  }
-
-  @override
-  void update(double dt) {
-    super.update(dt);
-    if (!captured) {
-      // move cat here
-    }
-  }
+  // @override
+  // void update(double dt) {
+  //   super.update(dt);
+  //   if (!captured) {
+  //     // move cat here
+  //   }
+  // }
 
   @override
   void onCollision(
