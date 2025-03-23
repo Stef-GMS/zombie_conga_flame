@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flame/components.dart'
     hide Timer; // hide Timer is because Flame has Timer and we want Dart one
+import 'package:flame/effects.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame/palette.dart';
@@ -15,12 +16,13 @@ import 'package:zombie_conga_flame/game/components/background_parallax_component
 import 'package:zombie_conga_flame/game/game.dart';
 
 class ZombieCongaGame extends FlameGame with HasCollisionDetection {
-  int cats = 0;
   ZombieCongaGame() {
     zombie = Zombie(joystick: joystick);
   }
+
   int lives = 5;
   late Zombie zombie;
+
   // final int _timeLimit = 30;
   // late Timer _timer;
   // late int _remainingTime = _timeLimit;
@@ -76,9 +78,17 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
       ],
     );
 
-    add(ScreenHitbox());
+    //add(BackgroundComponent());
+    add(MyParallaxComponent());
+
     add(zombie);
     add(joystick);
+    // add(Cat());
+    spawnCats();
+    //add(Enemy());
+    spawnEnemy();
+
+    //add(ScreenHitbox());
 
     // Add Score TextComponent.
     add(_catCount);
@@ -96,8 +106,6 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
     // set a timer to spawn more cats
     Timer(
-      const Duration(seconds: 1) + Duration(milliseconds: random.nextInt(1000)),
-      spawnCat,
       const Duration(seconds: 1) +
           Duration(
             milliseconds: _random.nextInt(1000),
@@ -164,6 +172,7 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     // example of using a setter to set a zombie property
     //zombie.catCountInTrain = 100;
   }
+
   void catCollidesWithZombie() {
     add(Cat());
   }
