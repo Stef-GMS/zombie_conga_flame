@@ -1,5 +1,7 @@
+import 'dart:async';
+
 import 'package:flame/collisions.dart';
-import 'package:flame/components.dart';
+import 'package:flame/components.dart' hide Timer;
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
@@ -38,6 +40,8 @@ class Zombie extends SpriteGroupComponent<MovementState>
 
   /// Joystick for moving Zombie
   JoystickComponent joystick;
+
+  bool isInvincible = false;
 
   @override
   Future<void> onLoad() async {
@@ -167,5 +171,20 @@ class Zombie extends SpriteGroupComponent<MovementState>
 
   void addCatToTrain(Cat cat) {
     train.add(cat);
+  }
+
+  void makeInvincible() {
+    if (isInvincible) {
+      return;
+    }
+
+    isInvincible = true;
+
+    Timer(
+      const Duration(seconds: 3),
+      () {
+        isInvincible = false;
+      },
+    );
   }
 }
