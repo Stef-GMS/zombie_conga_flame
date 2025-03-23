@@ -105,6 +105,28 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
       spawnCats,
     );
   }
+
+  void spawnEnemy() {
+    final enemy = Enemy();
+    final x = size.x;
+
+    final y = _random.nextDouble() * size.y;
+    enemy.position = Vector2(x, y);
+
+    add(enemy);
+
+    enemy.add(
+      MoveToEffect(
+        Vector2(
+          -enemy.width,
+          y,
+        ),
+        EffectController(duration: 3.0), // SpriteKit app had 2.0
+        onComplete: () {
+          enemy.removeFromParent();
+          spawnEnemy();
+        },
+      ),
     );
   }
 
