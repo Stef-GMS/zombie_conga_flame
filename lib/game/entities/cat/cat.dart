@@ -20,7 +20,7 @@ class Cat extends SpriteComponent //
 
   final Random _random = Random();
 
-  Zombie? zombie;
+  bool captured = false;
 
   @override
   Future<void> onLoad() async {
