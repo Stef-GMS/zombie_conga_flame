@@ -1,5 +1,7 @@
+import 'dart:async';
+
 import 'package:flame/collisions.dart';
-import 'package:flame/components.dart';
+import 'package:flame/components.dart' hide Timer;
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
@@ -38,6 +40,8 @@ class Zombie extends SpriteGroupComponent<MovementState>
 
   /// Joystick for moving Zombie
   JoystickComponent joystick;
+
+  bool isInvincible = false;
 
   @override
   Future<void> onLoad() async {
@@ -84,6 +88,7 @@ class Zombie extends SpriteGroupComponent<MovementState>
   }
 
   void _updatePosition(double dt) {
+    // Set joystick direction and how much to move based on direction
     if (joystick.direction == JoystickDirection.idle) {
       current = MovementState.idle;
       return;
@@ -124,13 +129,17 @@ class Zombie extends SpriteGroupComponent<MovementState>
 
     for (final cat in train) {
       //
+      // Check to see if the cat has any children (other cats in the train)
       if (cat.children.any((component) => component is MoveByEffect) == false) {
         //
+        // Set the direction the cat needs to move
         final direction = (targetPosition - cat.position).normalized();
 
+        // Set the position delta the cat needs to move
         final deltaPos =
             direction * catMovePointsPerSec * actionDuration; // n = pixels per sec; ex. n = 100.0
 
+        // Add cat to train
         cat.add(
           MoveByEffect(
             deltaPos,
@@ -138,7 +147,44 @@ class Zombie extends SpriteGroupComponent<MovementState>
           ),
         );
       }
+
+      // Set the position for cat in relation to Zombie train of cats
       targetPosition = cat.position + offset;
     }
+  }
+
+  void removeCatsFromTrain(int count) {
+    for (var i = 0; i < count && train.isNotEmpty; i++) {
+      train.removeLast().removeFromParent();
+    }
+  }
+
+  // if you have parameters then you must use function
+  // int getCatCountInTrain() => train.length;
+
+  // since there are no parameters, use a property by using a "getter"
+  // if you need to do multiple steps then use a function not a getter
+  // getter should not have side effects that change state or
+  int get catCountInTrain => train.length;
+
+  //set catCountInTrain(int value){}
+
+  void addCatToTrain(Cat cat) {
+    train.add(cat);
+  }
+
+  void makeInvincible() {
+    if (isInvincible) {
+      return;
+    }
+
+    isInvincible = true;
+
+    Timer(
+      const Duration(seconds: 3),
+      () {
+        isInvincible = false;
+      },
+    );
   }
 }

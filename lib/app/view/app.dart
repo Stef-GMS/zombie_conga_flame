@@ -36,9 +36,11 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Determine size of screen
-    // final width = MediaQuery.of(context).size.shortestSide;
+
+    // Get width of device.  Use longestSide for landscape apps, shortestSide for portrait.
     width = MediaQuery.of(context).size.longestSide;
 
+    // Set deviceSize based on width.  This is used for font scaling.
     deviceSize = width >= 1024
         ? 'extra large'
         : width >= 700
@@ -47,7 +49,7 @@ class AppView extends StatelessWidget {
                 ? 'medium'
                 : 'small';
 
-    print('deviceSize: $deviceSize, width: $width');
+    //print('deviceSize: $deviceSize, width: $width');
 
     // final scaleMultiplier = deviceSize == 'extra large'
     //     ? 1.5

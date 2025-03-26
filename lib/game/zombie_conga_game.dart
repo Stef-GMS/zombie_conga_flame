@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flame/components.dart'
     hide Timer; // hide Timer is because Flame has Timer and we want Dart one
+import 'package:flame/effects.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame/palette.dart';
@@ -15,8 +16,13 @@ import 'package:zombie_conga_flame/game/components/background_parallax_component
 import 'package:zombie_conga_flame/game/game.dart';
 
 class ZombieCongaGame extends FlameGame with HasCollisionDetection {
-  int cats = 0;
+  ZombieCongaGame() {
+    zombie = Zombie(joystick: joystick);
+  }
+
   int lives = 5;
+  late Zombie zombie;
+
   // final int _timeLimit = 30;
   // late Timer _timer;
   // late int _remainingTime = _timeLimit;
@@ -57,14 +63,6 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
     await Flame.device.setLandscape();
 
-    //add(BackgroundComponent());
-    add(MyParallaxComponent());
-    add(Zombie(joystick: joystick));
-    add(joystick);
-    add(Cat());
-    spawnCat();
-    //add(EnemyComponent());
-
     await FlameAudio.audioCache.loadAll(
       [
         Globals.hitCatSound,
@@ -72,7 +70,14 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
       ],
     );
 
-    add(ScreenHitbox());
+    add(MyParallaxComponent());
+
+    add(zombie);
+    add(joystick);
+
+    spawnCats();
+
+    spawnEnemy();
 
     // Add Score TextComponent.
     add(_catCount);
@@ -81,12 +86,44 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     add(_livesCount);
   } // onLoad()
 
-  final random = Random();
-  void spawnCat() {
+  final _random = Random();
+
+  void spawnCats() {
+    //
+    // add a cat to game
     add(Cat());
+
+    // set a timer to spawn more cats
     Timer(
-      const Duration(seconds: 1) + Duration(milliseconds: random.nextInt(1000)),
-      spawnCat,
+      const Duration(seconds: 1) +
+          Duration(
+            milliseconds: _random.nextInt(1000),
+          ),
+      spawnCats,
+    );
+  }
+
+  void spawnEnemy() {
+    final enemy = Enemy();
+    final x = size.x;
+
+    final y = _random.nextDouble() * size.y;
+    enemy.position = Vector2(x, y);
+
+    add(enemy);
+
+    enemy.add(
+      MoveToEffect(
+        Vector2(
+          -enemy.width,
+          y,
+        ),
+        EffectController(duration: 3.0), // SpriteKit app had 2.0
+        onComplete: () {
+          enemy.removeFromParent();
+          spawnEnemy();
+        },
+      ),
     );
   }
 
@@ -96,7 +133,8 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   void update(double dt) {
     super.update(dt);
 
-    _catCount.text = 'Cats: $cats';
+    // _catCount.text = 'Cats: ${zombie.catCountInTrain()}';
+    _catCount.text = 'Cats: ${zombie.catCountInTrain}';
 
     if (lives < 5) {
       _livesCount.textRenderer = TextPaint(
@@ -113,6 +151,23 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   }
 
   void reset() {
-    cats = 0;
+    // example of using a function
+    // zombie.removeCatsFromTrain(zombie.catCountInTrain());
+
+    // example of using a getter
+    zombie.removeCatsFromTrain(zombie.catCountInTrain);
+
+    // example of using a setter to set a zombie property
+    //zombie.catCountInTrain = 100;
+  }
+
+  void catCollidesWithZombie() {
+    add(Cat());
+  }
+
+  void enemyCollidesWithZombie() {
+    zombie
+      ..removeCatsFromTrain(2)
+      ..makeInvincible();
   }
 } // ZombieCongaGame
