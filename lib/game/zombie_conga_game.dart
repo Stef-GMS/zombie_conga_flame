@@ -12,23 +12,23 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:zombie_conga_flame/app/view/app.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
 import 'package:zombie_conga_flame/game/components/background_parallax_component.dart';
-// import 'package:zombie_conga_flame/game/entities/cat/cat.dart';
 import 'package:zombie_conga_flame/game/game.dart';
+import 'package:zombie_conga_flame/loading/view/game_over_menu.dart';
 
 class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   ZombieCongaGame() {
     zombie = Zombie(joystick: joystick);
   }
 
-  int lives = 5;
   late Zombie zombie;
 
-  // final int _timeLimit = 30;
-  // late Timer _timer;
-  // late int _remainingTime = _timeLimit;
+  int lives = 1;
+  int catCount = 0;
+
+  bool gameOver = false;
 
   /// Text UI component for keeping track of score
-  final TextComponent _catCount = // Configure TextComponent
+  late final TextComponent _catScore = // Configure TextComponent
       TextComponent(
     //text: '',  // text will be set later
     position: Vector2(5, 0),
@@ -61,6 +61,13 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
 
     //debugMode = true; //displays boxes and circles around components to help debug
 
+    //await FlameAudio.bgm.play('backgroundMusic.mp3');
+
+    // Configures the top left as the anchor for the viewfinder.
+    // By default, the viewfinder uses the middle of the area as
+    // the anchor for (0,0).
+    camera.viewfinder.anchor = Anchor.topLeft;
+
     await Flame.device.setLandscape();
 
     await FlameAudio.audioCache.loadAll(
@@ -75,15 +82,20 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     add(zombie);
     add(joystick);
 
-    spawnCats();
+    if (!gameOver) {
+      spawnCats();
+      spawnEnemy(); // Stef uncomment this
 
-    spawnEnemy();
+      // Add Score TextComponent.
+      add(_catScore);
 
-    // Add Score TextComponent.
-    add(_catCount);
-
-    // Add Score TextComponent.
-    add(_livesCount);
+      // Add Score TextComponent.
+      add(_livesCount);
+    } else {
+      GameOverMenu(
+        gameRef: this,
+      );
+    }
   } // onLoad()
 
   final _random = Random();
@@ -133,21 +145,43 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
   void update(double dt) {
     super.update(dt);
 
-    // _catCount.text = 'Cats: ${zombie.catCountInTrain()}';
-    _catCount.text = 'Cats: ${zombie.catCountInTrain}';
+    if (!gameOver) {
+      // _catCount.text = 'Cats: ${zombie.catCountInTrain()}';
+      _catScore.text = 'Cats: ${zombie.catCountInTrain}';
 
-    if (lives < 5) {
-      _livesCount.textRenderer = TextPaint(
-        style: TextStyle(
-          color: BasicPalette.orange.color,
-          fontSize: 50,
-        ),
-      );
+      if (lives < 3) {
+        _livesCount.textRenderer = TextPaint(
+          style: TextStyle(
+            color: BasicPalette.orange.color,
+            fontSize: 50,
+          ),
+        );
+      }
     }
+    // else {
+    // print('You Lose!');
+    //
+    // // FlameAudio.bgm.stop();
+    //
+    // removeAll(children);
+    // // processLifecycleEvents();
+    // // Flame.images.clearCache();
+    // // Flame.assets.clearCache();
+    //
+    // Navigator.of(buildContext!).push(
+    //   MaterialPageRoute<dynamic>(
+    //     builder: (BuildContext context) {
+    //       return const GameOver(won: false);
+    //     },
+    //   ),
+    // );
+    // }
 
     _livesCount
       ..text = 'Lives: $lives'
       ..position = Vector2(width - 20.0, 0);
+
+    return;
   }
 
   void reset() {
@@ -161,6 +195,16 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     //zombie.catCountInTrain = 100;
   }
 
+  // @override
+  // void onRemove() {
+  //   // // Optional based on your game needs.
+  //   //removeAll(children);
+  //   // processLifecycleEvents();
+  //   // Flame.images.clearCache();
+  //   // Flame.assets.clearCache();
+  //   // // Any other code that you want to run when the game is removed.
+  // }
+
   void catCollidesWithZombie() {
     add(Cat());
   }
@@ -169,5 +213,21 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     zombie
       ..removeCatsFromTrain(2)
       ..makeInvincible();
+
+    lives--;
+
+    print('Lives: $lives');
+
+    if (lives <= 0) {
+      gameOver = true;
+      lives = 5;
+      //zombie.removeCatsFromTrain(2);
+
+      // reset();
+
+      pauseEngine();
+
+      overlays.add(GameOverMenu.id);
+    }
   }
 } // ZombieCongaGame

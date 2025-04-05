@@ -22,6 +22,8 @@ class _LoadingPageState extends State<LoadingPage> {
     if (!mounted) {
       return;
     }
+
+    // Navigate to the Title/Welcome
     await navigator.pushReplacement<void, void>(
       TitlePage.route(),
     );

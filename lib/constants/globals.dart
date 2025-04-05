@@ -2,6 +2,8 @@ class Globals {
   Globals._();
 
   static const String backgroundParallaxSprite1 = 'background.png';
+  // static const String backgroundParallaxSprite1 = 'background1.png';
+  // static const String backgroundParallaxSprite2 = 'background2.png';
   static const String zombieIdle = 'zombieIdle.png';
   static const String zombieSpriteSheet = 'zombie_spritesheet.png';
   static const String zombieMove1 = 'zombieMove1.png';
@@ -9,9 +11,9 @@ class Globals {
   static const String zombieMove3 = 'zombieMove3.png';
   static const String catSprite = 'cat.png';
   static const String enemySprite = 'enemy.png';
-  static const String mainMenuSprite = 'MainMenu.png';
-  static const String youLoseSprite = 'YouLose.png';
-  static const String youWinSprite = 'YouWin.png';
+  static const String mainMenuSprite = 'title_page.png';
+  static const String youLoseSprite = 'you_lose.png';
+  static const String youWinSprite = 'you_win.png';
   static const String hitCatSound = 'hitCat.wav';
   static const String hitEnemySound = 'hitCatLady.wav';
 }

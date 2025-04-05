@@ -150,6 +150,10 @@ class Zombie extends SpriteGroupComponent<MovementState>
 
       // Set the position for cat in relation to Zombie train of cats
       targetPosition = cat.position + offset;
+
+      //catCount = train.length;
+
+      print('train.length: ${train.length}');
     }
   }
 

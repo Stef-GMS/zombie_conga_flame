@@ -11,20 +11,15 @@ class GamePlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GameWidget(
-          game: _zombieCongaGame,
-          overlayBuilderMap: {
-            GameOverMenu.id: (
-              BuildContext context,
-              ZombieCongaGame gameRef,
-            ) =>
-                GameOverMenu(gameRef: gameRef),
-          },
-        ),
-      ),
+    return GameWidget(
+      game: _zombieCongaGame,
+      overlayBuilderMap: {
+        GameOverMenu.id: (
+          BuildContext context,
+          ZombieCongaGame gameRef,
+        ) =>
+            GameOverMenu(gameRef: gameRef),
+      },
     );
   }
 }

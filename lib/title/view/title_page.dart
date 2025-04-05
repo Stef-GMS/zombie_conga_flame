@@ -18,7 +18,7 @@ class TitlePage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/MainMenu.png'),
+            image: AssetImage('assets/images/title_page.png'),
             fit: BoxFit.fill, // template had .cover and when resizing it didn't fit right
           ),
         ),
