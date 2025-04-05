@@ -16,36 +16,36 @@ class GameOverMenu extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/${Globals.mainMenuSprite}'),
+            image: AssetImage('assets/images/${Globals.youLoseSprite}'),
             fit: BoxFit.cover,
           ),
         ),
         child: SafeArea(
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 50),
-                  child: Text(
-                    'Game Over',
-                    style: TextStyle(
-                      fontSize: 50,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 50),
-                  child: Text(
-                    'Score: ${gameRef.zombie.catCountInTrain}',
-                    style: const TextStyle(
-                      fontSize: 50,
-                    ),
-                  ),
-                ),
+                // const Padding(
+                //   padding: EdgeInsets.symmetric(vertical: 50),
+                //   child: Text(
+                //     'Game Over',
+                //     style: TextStyle(
+                //       fontSize: 50,
+                //     ),
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(vertical: 50),
+                //   child: Text(
+                //     'Score: ${gameRef.zombie.catCountInTrain}',
+                //     style: const TextStyle(
+                //       fontSize: 50,
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
-                  width: 400,
-                  height: 100,
+                  // width: 400,
+                  // height: 100,
                   child: ElevatedButton(
                     onPressed: () {
                       gameRef.overlays.remove(GameOverMenu.id);
@@ -54,13 +54,34 @@ class GameOverMenu extends StatelessWidget {
                         ..resumeEngine();
                     },
                     child: const Text(
-                      'Play Again?',
+                      'Play Again',
                       style: TextStyle(
-                        fontSize: 50,
+                        fontSize: 30,
                       ),
                     ),
                   ),
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
+                // SizedBox(
+                //   width: 400,
+                //   height: 100,
+                //   child: ElevatedButton(
+                //     onPressed: () {
+                //       gameRef.overlays.remove(GameOverMenu.id);
+                //       gameRef
+                //         ..reset()
+                //         ..resumeEngine();
+                //     },
+                //     child: const Text(
+                //       'Main Menu',
+                //       style: TextStyle(
+                //         fontSize: 50,
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

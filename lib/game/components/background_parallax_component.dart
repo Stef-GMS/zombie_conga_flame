@@ -8,21 +8,10 @@ import 'package:zombie_conga_flame/game/zombie_conga_game.dart';
 class MyParallaxComponent extends ZombieCongaGame with PanDetector {
   @override
   Future<void> onLoad() async {
-    /* from iOS version
-    for i in 0...1 {
-      let background = backgroundNode()
-      background.anchorPoint = CGPoint.zero
-      background.position =
-        CGPoint(x: CGFloat(i)*background.size.width, y: 0)
-      background.name = "background"
-      background.zPosition = -1
-      addChild(background)
-    }
-    */
-
     final parallax = await loadParallaxComponent(
       [
         ParallaxImageData(Globals.backgroundParallaxSprite1),
+        // ParallaxImageData(Globals.backgroundParallaxSprite2),
       ],
       // Repeat the image in both the x and y directions until the box is filled.
       repeat: ImageRepeat.repeat,

@@ -30,7 +30,7 @@ class Enemy extends SpriteComponent //
     sprite = await gameRef.loadSprite(Globals.enemySprite);
     anchor = Anchor.centerLeft; //sprite's center left
 
-    print('In Enemy.dart - Enemy position $position');
+    // print('In Enemy.dart - Enemy position $position');
 
     add(CircleHitbox());
   }

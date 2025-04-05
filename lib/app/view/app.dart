@@ -49,28 +49,6 @@ class AppView extends StatelessWidget {
                 ? 'medium'
                 : 'small';
 
-    //print('deviceSize: $deviceSize, width: $width');
-
-    // final scaleMultiplier = deviceSize == 'extra large'
-    //     ? 1.5
-    //     : deviceSize == 'large'
-    //         ? 1.0
-    //         : deviceSize == 'small'
-    //             ? -0.10
-    //             : 0.0;
-    //
-    // final value = 20.0 * scaleMultiplier;
-    // print('scaleMultiplier: $scaleMultiplier  value: $value');
-    //
-    // final textSize = 20.0 + (20.0 * scaleMultiplier);
-    // print('textSize: $textSize');
-    //
-    // final isTablet = MediaQuery.of(context).size.shortestSide >= 700;
-    // print('isTablet: $isTablet');
-    //
-    // final isSmallPhone = MediaQuery.of(context).size.shortestSide <= 380;
-    // print('isSmallPhone: $isSmallPhone');
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
