@@ -1,10 +1,51 @@
-include: package:very_good_analysis/analysis_options.6.0.0.yaml
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+
+include: package:flutter_lints/flutter.yaml
+
 analyzer:
+  language:
+    strict-casts: true
   exclude:
     - lib/gen/*
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
+
+formatter:
+  trailing_commas: preserve
+
 linter:
   rules:
+    always_use_package_imports: true
+    use_super_parameters: true
+      # Remove or force lint rules by adding lines like the following.
+      # The lints below are disabled in order to make things smoother in early
+    # development. Consider enabling them once development is further along.
+    prefer_const_constructors: false  # Annoying in early development
+      # To require documentation comments for public members, set to true.
+    # To relax the requirement, set to false.
     public_member_api_docs: false
-    avoid_redundant_argument_values: false
-    lines_longer_than_80_chars: false
-    prefer_int_literals: false
+    avoid_print: false  # Uncomment to disable the `avoid_print` rule
+    prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+
+auto_execution:
+  enabled: true
+  whitelist:
+    - pattern: "^flutter (pub get|clean|analyze)$"
+    - pattern: "^dart format"
+    - pattern: "^git add"
+    - pattern: "^git commit"
+  blacklist:
+    - pattern: ".*rm -rf.*"
+    - pattern: ".*delete.*"
+    - pattern: "^git push"
+    - pattern: "^git reset --hard"
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+s

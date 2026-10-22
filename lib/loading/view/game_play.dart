@@ -1,6 +1,5 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-
 import 'package:zombie_conga_flame/game/zombie_conga_game.dart';
 import 'package:zombie_conga_flame/loading/view/game_over_menu.dart';
 
@@ -16,9 +15,9 @@ class GamePlay extends StatelessWidget {
       overlayBuilderMap: {
         GameOverMenu.id: (
           BuildContext context,
-          ZombieCongaGame gameRef,
+          ZombieCongaGame game,
         ) =>
-            GameOverMenu(gameRef: gameRef),
+            GameOverMenu(game: game),
       },
     );
   }

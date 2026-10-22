@@ -2,10 +2,8 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:zombie_conga_flame/gen/assets.gen.dart';
 
 // class AppBlocObserver extends BlocObserver {
 //   @override
@@ -41,7 +39,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     await windowManager.setMinimumSize(const Size(1024, 768));
     await windowManager.setMaximumSize(const Size(2048, 1536));
     await windowManager.setSize(const Size(1024, 768));
-    await windowManager.setAspectRatio(16.0 / 9.0); // aspect ratio supported, 16:9 (1.77)
+    await windowManager
+        .setAspectRatio(16.0 / 9.0); // aspect ratio supported, 16:9 (1.77)
     await windowManager.setMaximizable(false);
 
     await windowManager.setTitle('Zombie Conga'); //Window title

@@ -15,12 +15,12 @@ class GameOver extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(won ? "You Win!" : "Game Over!"),
+            Text(won ? 'You Win!' : 'Game Over!'),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Return to the game
               },
-              child: const Text("Play Again"),
+              child: const Text('Play Again'),
             ),
           ],
         ),

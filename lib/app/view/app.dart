@@ -1,10 +1,7 @@
-import 'dart:ffi';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flame/cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:zombie_conga_flame/l10n/l10n.dart';
 import 'package:zombie_conga_flame/loading/loading.dart';
 
@@ -52,8 +49,11 @@ class AppView extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        useMaterial3: true,
         primaryColor: const Color(0xFF2A48DF),
-        appBarTheme: const AppBarTheme(color: Color(0xFF2A48DF)),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF2A48DF),
+        ),
         colorScheme: ColorScheme.fromSwatch(
           accentColor: const Color(0xFF2A48DF),
         ),
@@ -65,7 +65,7 @@ class AppView extends StatelessWidget {
             ),
           ),
         ),
-        textTheme: GoogleFonts.poppinsTextTheme(),
+        //textTheme: GoogleFonts.poppins().fontFamily,
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

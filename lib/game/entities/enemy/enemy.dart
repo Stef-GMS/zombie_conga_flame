@@ -1,20 +1,16 @@
 import 'dart:async';
-import 'dart:math';
-import 'dart:ui';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart'
     hide Timer; // hide Timer is because Flame has Timer and we want Dart one
-import 'package:flame/effects.dart';
 import 'package:flame_audio/flame_audio.dart';
-import 'package:flutter/material.dart';
 import 'package:zombie_conga_flame/constants/globals.dart';
 import 'package:zombie_conga_flame/game/entities/zombie/zombie.dart';
 import 'package:zombie_conga_flame/game/zombie_conga_game.dart';
 
 class Enemy extends SpriteComponent //
     with
-        HasGameRef<ZombieCongaGame>,
+        HasGameReference<ZombieCongaGame>,
         CollisionCallbacks {
   Enemy() {
     width = _spriteWidth / 2.5;
@@ -27,7 +23,7 @@ class Enemy extends SpriteComponent //
   Future<void> onLoad() async {
     await super.onLoad();
 
-    sprite = await gameRef.loadSprite(Globals.enemySprite);
+    sprite = await game.loadSprite(Globals.enemySprite);
     anchor = Anchor.centerLeft; //sprite's center left
 
     // print('In Enemy.dart - Enemy position $position');
@@ -42,7 +38,7 @@ class Enemy extends SpriteComponent //
   ) {
     if (other is Zombie) {
       if (other.isInvincible == false) {
-        gameRef.enemyCollidesWithZombie();
+        game.enemyCollidesWithZombie();
 
         FlameAudio.play(Globals.hitEnemySound);
       }

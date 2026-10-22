@@ -7,7 +7,7 @@ import 'package:zombie_conga_flame/game/game.dart';
 class TappingBehavior extends Behavior<Unicorn> //
     with
         TapCallbacks,
-        HasGameRef<ZombieCongaGame> {
+        HasGameReference<ZombieCongaGame> {
   @override
   bool containsLocalPoint(Vector2 point) {
     return parent.containsLocalPoint(point);
@@ -18,9 +18,9 @@ class TappingBehavior extends Behavior<Unicorn> //
     if (parent.isAnimationPlaying()) {
       return;
     }
-    //gameRef.counter++;
+    //game.counter++;
     parent.playAnimation();
 
-    //gameRef.effectPlayer.play(AssetSource(Assets.audio.effect));
+    //game.effectPlayer.play(AssetSource(Assets.audio.effect));
   }
 }

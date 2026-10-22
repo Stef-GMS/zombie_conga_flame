@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:zombie_conga_flame/game/entities/unicorn/behaviors/tapping_behavior.dart';
 import 'package:zombie_conga_flame/gen/assets.gen.dart';
 
-class Unicorn extends PositionedEntity with HasGameRef {
+class Unicorn extends PositionedEntity with HasGameReference {
   Unicorn({
     required super.position,
   }) : super(
@@ -31,7 +31,7 @@ class Unicorn extends PositionedEntity with HasGameRef {
   @override
   Future<void> onLoad() async {
     final animation = SpriteAnimation.fromFrameData(
-      gameRef.images.fromCache(Assets.images.unicornAnimation.path),
+      game.images.fromCache(Assets.images.unicornAnimation.path),
       SpriteAnimationData.sequenced(
         amount: 16,
         stepTime: 0.1,

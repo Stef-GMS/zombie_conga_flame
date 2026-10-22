@@ -93,7 +93,7 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
       add(_livesCount);
     } else {
       GameOverMenu(
-        gameRef: this,
+        game: this,
       );
     }
   } // onLoad()
@@ -148,6 +148,8 @@ class ZombieCongaGame extends FlameGame with HasCollisionDetection {
     if (!gameOver) {
       // _catCount.text = 'Cats: ${zombie.catCountInTrain()}';
       _catScore.text = 'Cats: ${zombie.catCountInTrain}';
+
+      print('lives: ${lives}  _catScore.text: ${_catScore.text}');
 
       if (lives < 3) {
         _livesCount.textRenderer = TextPaint(
