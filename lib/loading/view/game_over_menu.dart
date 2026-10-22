@@ -4,11 +4,11 @@ import 'package:zombie_conga_flame/game/zombie_conga_game.dart';
 
 class GameOverMenu extends StatelessWidget {
   const GameOverMenu({
-    required this.gameRef,
+    required this.game,
     super.key,
   });
   static const String id = 'GameOverMenu';
-  final ZombieCongaGame gameRef;
+  final ZombieCongaGame game;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class GameOverMenu extends StatelessWidget {
                 // Padding(
                 //   padding: const EdgeInsets.symmetric(vertical: 50),
                 //   child: Text(
-                //     'Score: ${gameRef.zombie.catCountInTrain}',
+                //     'Score: ${game.zombie.catCountInTrain}',
                 //     style: const TextStyle(
                 //       fontSize: 50,
                 //     ),
@@ -48,8 +48,8 @@ class GameOverMenu extends StatelessWidget {
                   // height: 100,
                   child: ElevatedButton(
                     onPressed: () {
-                      gameRef.overlays.remove(GameOverMenu.id);
-                      gameRef
+                      game.overlays.remove(GameOverMenu.id);
+                      game
                         ..reset()
                         ..resumeEngine();
                     },
@@ -69,7 +69,7 @@ class GameOverMenu extends StatelessWidget {
                 //   height: 100,
                 //   child: ElevatedButton(
                 //     onPressed: () {
-                //       gameRef.overlays.remove(GameOverMenu.id);
+                //       game.overlays.remove(GameOverMenu.id);
                 //       gameRef
                 //         ..reset()
                 //         ..resumeEngine();

@@ -31,7 +31,8 @@ void main() {
 
       when(() => images.loadAll(any())).thenAnswer((_) async => <Image>[]);
 
-      when(() => audio.loadAll([Assets.audio.background, Assets.audio.effect])).thenAnswer(
+      when(() => audio.loadAll([Assets.audio.background, Assets.audio.effect]))
+          .thenAnswer(
         (_) async => [
           Uri.parse(Assets.audio.background),
           Uri.parse(Assets.audio.effect),
@@ -80,7 +81,8 @@ void main() {
     testWidgets('redirects after loading', (tester) async {
       final navigator = MockNavigator();
       when(navigator.canPop).thenReturn(true);
-      when(() => navigator.pushReplacement<void, void>(any())).thenAnswer((_) async {});
+      when(() => navigator.pushReplacement<void, void>(any()))
+          .thenAnswer((_) async {});
 
       await tester.pumpApp(
         LoadingPage(),

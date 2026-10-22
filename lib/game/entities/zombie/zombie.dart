@@ -17,7 +17,7 @@ enum MovementState {
 
 class Zombie extends SpriteGroupComponent<MovementState>
     with //
-        HasGameRef<ZombieCongaGame>,
+        HasGameReference<ZombieCongaGame>,
         DragCallbacks {
   Zombie({
     required this.joystick,
@@ -48,10 +48,10 @@ class Zombie extends SpriteGroupComponent<MovementState>
     await super.onLoad();
 
     // Sprites
-    final zombieIdle = await gameRef.loadSprite(Globals.zombieIdle);
-    final zombieMove1 = await gameRef.loadSprite(Globals.zombieMove1);
-    final zombieMove2 = await gameRef.loadSprite(Globals.zombieMove2);
-    final zombieMove3 = await gameRef.loadSprite(Globals.zombieMove3);
+    final zombieIdle = await game.loadSprite(Globals.zombieIdle);
+    final zombieMove1 = await game.loadSprite(Globals.zombieMove1);
+    final zombieMove2 = await game.loadSprite(Globals.zombieMove2);
+    final zombieMove3 = await game.loadSprite(Globals.zombieMove3);
 
     // Sprite states
     sprites = {
@@ -62,15 +62,15 @@ class Zombie extends SpriteGroupComponent<MovementState>
     };
 
     // Set boundaries
-    _rightBound = gameRef.size.x - 45;
+    _rightBound = game.size.x - 45;
     _leftBound = 0 + 45;
     _upBound = 0 + 46;
-    _downBound = gameRef.size.y - 46; //85;
+    _downBound = game.size.y - 46; //85;
 
     current = MovementState.idle;
 
     // Set position to middle of screen
-    position = gameRef.size / 2.0;
+    position = game.size / 2.0;
 
     // Set sprite dimensions for screen
     height = _spriteHeight / 2.5;
@@ -153,7 +153,7 @@ class Zombie extends SpriteGroupComponent<MovementState>
 
       //catCount = train.length;
 
-      print('train.length: ${train.length}');
+      //print('train.length: ${train.length}');
     }
   }
 

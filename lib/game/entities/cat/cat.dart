@@ -15,7 +15,7 @@ import 'package:zombie_conga_flame/game/zombie_conga_game.dart';
 
 class Cat extends SpriteComponent //
     with
-        HasGameRef<ZombieCongaGame>,
+        HasGameReference<ZombieCongaGame>,
         CollisionCallbacks {
   final double _spriteWidth = 146;
   final double _spriteHeight = 156;
@@ -28,7 +28,7 @@ class Cat extends SpriteComponent //
   Future<void> onLoad() async {
     await super.onLoad();
 
-    sprite = await gameRef.loadSprite(Globals.catSprite);
+    sprite = await game.loadSprite(Globals.catSprite);
     width = _spriteWidth / 2.5;
     height = _spriteHeight / 2.5;
     position = _getCatRandomPosition();
@@ -95,7 +95,7 @@ class Cat extends SpriteComponent //
       //
       // Add Cat Train behind Zombie
       other.addCatToTrain(this);
-      gameRef.catCollidesWithZombie();
+      game.catCollidesWithZombie();
       captured = true;
 
       //
@@ -113,8 +113,8 @@ class Cat extends SpriteComponent //
   }
 
   Vector2 _getCatRandomPosition() {
-    final x = _random.nextDouble() * gameRef.size.x;
-    final y = _random.nextDouble() * gameRef.size.y;
+    final x = _random.nextDouble() * game.size.x;
+    final y = _random.nextDouble() * game.size.y;
     return Vector2(x, y);
   }
 }

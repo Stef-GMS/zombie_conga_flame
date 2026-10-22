@@ -19,7 +19,8 @@ class TitlePage extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/title_page.png'),
-            fit: BoxFit.fill, // template had .cover and when resizing it didn't fit right
+            fit: BoxFit
+                .fill, // template had .cover and when resizing it didn't fit right
           ),
         ),
         child: SafeArea(
